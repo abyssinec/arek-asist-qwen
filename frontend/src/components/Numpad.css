@@ -1,0 +1,31 @@
+.numpad {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.numpad__key {
+  height: 132px;
+  border-radius: 32px;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 52px;
+  font-weight: 500;
+  display: grid;
+  place-items: center;
+}
+
+.numpad__key--ghost {
+  background: transparent;
+}
+
+.numpad__key--submit {
+  border: none;
+  background: var(--amber);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 32px;
+  font-weight: 800;
+}

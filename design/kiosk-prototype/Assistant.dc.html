@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>AI-консультант</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#05080F}
+*{box-sizing:border-box}
+a{color:#35E0FF;text-decoration:none}a:hover{color:#8FEFFF}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+@keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.08)}}
+@keyframes look{0%,40%,100%{transform:translateX(0)}50%,60%{transform:translateX(-10px)}70%,80%{transform:translateX(10px)}}
+@keyframes ring{0%{transform:scale(.8);opacity:.7}100%{transform:scale(1.55);opacity:0}}
+@keyframes glow{0%,100%{opacity:1}50%{opacity:.45}}
+@keyframes eq{0%,100%{height:6px}50%{height:28px}}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulseC{0%{box-shadow:0 0 0 0 rgba(53,224,255,.6)}100%{box-shadow:0 0 0 48px rgba(53,224,255,0)}}
+@keyframes caret{50%{opacity:0}}
+.bot-float{animation:float 4.5s ease-in-out infinite}
+.eye{animation:blink 5s infinite}
+.look{animation:look 9s ease-in-out infinite}
+.ring{animation:ring 3.2s ease-out infinite}
+.ring-fast{animation:ring 1.4s ease-out infinite}
+.ring-2{animation-delay:1.6s}
+.ring-fast.ring-2{animation-delay:.7s}
+.tip{animation:glow 1.8s ease-in-out infinite}
+.bar{animation:eq .8s ease-in-out infinite}
+.b2{animation-delay:.12s}.b3{animation-delay:.24s}.b4{animation-delay:.36s}.b5{animation-delay:.48s}
+.rise{animation:rise .6s cubic-bezier(.2,.8,.2,1) both}
+.pulse-c{animation:pulseC 1.4s ease-out infinite}
+.caret{animation:caret 1s step-end infinite}
+@media (prefers-reduced-motion:reduce){.bot-float,.eye,.look,.ring,.ring-fast,.tip,.bar,.rise,.pulse-c,.caret{animation:none !important}}
+</style>
+</helmet>
+<div style="width: 1080px; height: 1920px; position: relative; overflow: hidden; background: #05080F; color: #EEF3FF; font-family: 'Manrope', system-ui, sans-serif; display: flex; flex-direction: column">
+  <div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none"></div>
+  <div style="position: absolute; left: 140px; top: 120px; width: 800px; height: 640px; border-radius: 50%; background: radial-gradient(circle, rgba(53,224,255,0.16), rgba(53,224,255,0) 65%); pointer-events: none"></div>
+
+  <header style="position: relative; display: flex; align-items: center; justify-content: space-between; padding: 48px 64px 0">
+    <div style="display: flex; align-items: center; gap: 20px">
+      <div style="width: 72px; height: 72px; border-radius: 22px; background: #FFB020; display: flex; align-items: center; justify-content: center">
+        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#05080F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"></path></svg>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 4px">
+        <span style="font-family: 'Unbounded', sans-serif; font-weight: 600; font-size: 30px; letter-spacing: -0.01em">Астана РЕК</span>
+        <span style="font-size: 20px; color: #8C9BB8">Центр обслуживания потребителей</span>
+      </div>
+    </div>
+    <div style="display: flex; gap: 4px; padding: 6px; border-radius: 999px; background: #0C1220; border: 1px solid rgba(255,255,255,0.08)">
+      <button style="height: 52px; padding: 0 20px; border-radius: 999px; border: none; background: transparent; color: #8C9BB8; font-family: inherit; font-size: 20px; font-weight: 700">ҚАЗ</button>
+      <button style="height: 52px; padding: 0 20px; border-radius: 999px; border: none; background: #EEF3FF; color: #05080F; font-family: inherit; font-size: 20px; font-weight: 700">РУС</button>
+      <button style="height: 52px; padding: 0 20px; border-radius: 999px; border: none; background: transparent; color: #8C9BB8; font-family: inherit; font-size: 20px; font-weight: 700">ENG</button>
+    </div>
+  </header>
+
+  <nav style="position: relative; display: flex; align-items: center; justify-content: space-between; padding: 32px 64px 0">
+    <a href="Main.dc.html" style="height: 64px; padding: 0 28px 0 20px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.14); color: #EEF3FF; display: flex; align-items: center; gap: 12px; font-size: 22px; font-weight: 600">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#EEF3FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg>
+      <span>На главную</span>
+    </a>
+    <div style="display: flex; align-items: center; gap: 12px; padding: 14px 22px; border-radius: 999px; background: rgba(61,220,151,0.12); color: #3DDC97; font-size: 20px; font-weight: 700">
+      <div class="tip" style="width: 12px; height: 12px; border-radius: 50%; background: #3DDC97"></div>
+      <span>ИИ-консультант онлайн</span>
+    </div>
+  </nav>
+
+  <section style="position: relative; height: 470px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 8px">
+    <div style="width: 360px; height: 420px; position: relative">
+      <div class="bot-float" style="position: absolute; left: 0; top: 0; width: 360px; height: 400px">
+        <sc-if value="{{listening}}" hint-placeholder-val="{{false}}">
+          <div class="ring-fast" style="position: absolute; left: 30px; top: 30px; width: 300px; height: 300px; border-radius: 50%; border: 3px solid rgba(53,224,255,0.5)"></div>
+          <div class="ring-fast ring-2" style="position: absolute; left: 30px; top: 30px; width: 300px; height: 300px; border-radius: 50%; border: 3px solid rgba(53,224,255,0.5)"></div>
+        </sc-if>
+        <sc-if value="{{idle}}" hint-placeholder-val="{{true}}">
+          <div class="ring" style="position: absolute; left: 30px; top: 30px; width: 300px; height: 300px; border-radius: 50%; border: 2px solid rgba(53,224,255,0.3)"></div>
+          <div class="ring ring-2" style="position: absolute; left: 30px; top: 30px; width: 300px; height: 300px; border-radius: 50%; border: 2px solid rgba(53,224,255,0.3)"></div>
+        </sc-if>
+        <div style="position: absolute; left: 172px; top: 24px; width: 6px; height: 44px; border-radius: 3px; background: #2A3A5C"></div>
+        <div class="tip" style="position: absolute; left: 163px; top: 6px; width: 24px; height: 24px; border-radius: 50%; background: #FFB020; box-shadow: 0 0 24px 6px rgba(255,176,32,0.55)"></div>
+        <div style="position: absolute; left: 14px; top: 140px; width: 30px; height: 86px; border-radius: 15px; background: #16223A; border: 1px solid rgba(255,255,255,0.1)"></div>
+        <div style="position: absolute; left: 316px; top: 140px; width: 30px; height: 86px; border-radius: 15px; background: #16223A; border: 1px solid rgba(255,255,255,0.1)"></div>
+        <div style="position: absolute; left: 36px; top: 62px; width: 288px; height: 236px; border-radius: 88px; background: linear-gradient(165deg, #22314F 0%, #0E1628 70%); border: 1px solid rgba(255,255,255,0.14); box-shadow: inset 0 2px 0 rgba(255,255,255,0.12), 0 30px 60px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center">
+          <div style="width: 224px; height: 150px; border-radius: 64px; background: #050912; border: 1px solid rgba(53,224,255,0.25); box-shadow: inset 0 0 30px rgba(53,224,255,0.15); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px">
+            <div class="look" style="display: flex; gap: 44px">
+              <div class="eye" style="width: 34px; height: 52px; border-radius: 17px; background: #35E0FF; box-shadow: 0 0 18px rgba(53,224,255,0.9)"></div>
+              <div class="eye" style="width: 34px; height: 52px; border-radius: 17px; background: #35E0FF; box-shadow: 0 0 18px rgba(53,224,255,0.9)"></div>
+            </div>
+            <sc-if value="{{listening}}" hint-placeholder-val="{{false}}">
+              <div style="display: flex; align-items: center; gap: 6px; height: 30px">
+                <div class="bar" style="width: 6px; height: 6px; border-radius: 3px; background: #35E0FF"></div>
+                <div class="bar b2" style="width: 6px; height: 6px; border-radius: 3px; background: #35E0FF"></div>
+                <div class="bar b3" style="width: 6px; height: 6px; border-radius: 3px; background: #FFB020"></div>
+                <div class="bar b4" style="width: 6px; height: 6px; border-radius: 3px; background: #35E0FF"></div>
+                <div class="bar b5" style="width: 6px; height: 6px; border-radius: 3px; background: #35E0FF"></div>
+              </div>
+            </sc-if>
+            <sc-if value="{{idle}}" hint-placeholder-val="{{true}}">
+              <div style="width: 46px; height: 14px; border-bottom: 4px solid #35E0FF; border-radius: 0 0 24px 24px"></div>
+            </sc-if>
+          </div>
+        </div>
+        <div style="position: absolute; left: 110px; top: 306px; width: 140px; height: 90px; border-radius: 40px 40px 48px 48px; background: linear-gradient(170deg, #1C2A46, #0C1424); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center">
+          <div class="tip" style="width: 48px; height: 48px; border-radius: 50%; border: 3px solid #FFB020; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(255,176,32,0.45)">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFB020" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"></path></svg>
+          </div>
+        </div>
+      </div>
+      <div style="position: absolute; left: 115px; top: 404px; width: 130px; height: 14px; border-radius: 50%; background: rgba(0,0,0,0.7); filter: blur(6px)"></div>
+    </div>
+    <sc-if value="{{listening}}" hint-placeholder-val="{{false}}">
+      <span style="font-family: 'Unbounded', sans-serif; font-size: 30px; font-weight: 500; color: #35E0FF">Слушаю вас…</span>
+    </sc-if>
+    <sc-if value="{{idle}}" hint-placeholder-val="{{true}}">
+      <span style="font-family: 'Unbounded', sans-serif; font-size: 30px; font-weight: 500">Задайте вопрос голосом</span>
+    </sc-if>
+  </section>
+
+  <section style="position: relative; margin: 28px 64px 0; flex: 1; min-height: 0; border-radius: 40px; background: #0C1220; border: 1px solid rgba(255,255,255,0.08); padding: 36px; display: flex; flex-direction: column; justify-content: flex-end; gap: 22px; overflow: hidden">
+    <div style="align-self: flex-start; max-width: 780px; padding: 22px 28px; border-radius: 28px 28px 28px 8px; background: #16223A; font-size: 25px; line-height: 1.45">Здравствуйте! Я цифровой консультант Астана РЕК. Подскажу баланс лицевого счёта, документы для подключения и куда обратиться.</div>
+    <div style="align-self: flex-end; max-width: 700px; padding: 22px 28px; border-radius: 28px 28px 8px 28px; background: #EEF3FF; color: #05080F; font-size: 25px; line-height: 1.45; font-weight: 600">Хочу подключить частный дом к электросети. Что нужно?</div>
+    <div style="align-self: flex-start; max-width: 820px; padding: 22px 28px 28px; border-radius: 28px 28px 28px 8px; background: #16223A; font-size: 25px; line-height: 1.45; display: flex; flex-direction: column; gap: 20px">
+      <span>Понадобится 6 документов. Подать их можно в окне 3, кабинет 104. Я подготовил список — его можно распечатать.</span>
+      <a href="Docs.dc.html" style="display: flex; align-items: center; gap: 20px; padding: 20px 24px; border-radius: 22px; background: #05080F; border: 1px solid rgba(255,176,32,0.4); color: #EEF3FF">
+        <div style="width: 64px; height: 64px; border-radius: 18px; background: rgba(255,176,32,0.14); display: flex; align-items: center; justify-content: center; flex-shrink: 0">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FFB020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path><path d="M9 14h6"></path><path d="M9 18h4"></path></svg>
+        </div>
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 4px">
+          <span style="font-weight: 700; font-size: 24px">Список документов · 6 позиций</span>
+          <span style="font-size: 20px; color: #8C9BB8">Открыть и распечатать чек</span>
+        </div>
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#FFB020" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+      </a>
+    </div>
+    <sc-if value="{{outage}}" hint-placeholder-val="{{false}}">
+      <div class="rise" style="align-self: flex-end; max-width: 700px; padding: 22px 28px; border-radius: 28px 28px 8px 28px; background: #EEF3FF; color: #05080F; font-size: 25px; line-height: 1.45; font-weight: 600">Будут ли отключения света на моей улице?</div>
+      <div class="rise" style="align-self: flex-start; max-width: 780px; padding: 22px 28px; border-radius: 28px 28px 28px 8px; background: #16223A; font-size: 25px; line-height: 1.45">Назовите улицу и номер дома — проверю график плановых отключений на ближайшие 7 дней.</div>
+    </sc-if>
+    <sc-if value="{{listening}}" hint-placeholder-val="{{false}}">
+      <div class="rise" style="align-self: flex-end; max-width: 700px; padding: 22px 28px; border-radius: 28px 28px 8px 28px; border: 2px dashed rgba(53,224,255,0.5); color: #A9DFFF; font-size: 25px; line-height: 1.45; font-style: italic">Сколько я должен за электроэнергию<span class="caret">|</span></div>
+    </sc-if>
+  </section>
+
+  <section style="position: relative; margin: 28px 64px 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
+    <a href="Account.dc.html" style="height: 104px; padding: 0 22px; border-radius: 26px; background: #0C1220; border: 1px solid rgba(255,255,255,0.1); color: #EEF3FF; display: flex; align-items: center; gap: 16px; font-size: 22px; font-weight: 700; line-height: 1.2">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#35E0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="15" rx="3"></rect><path d="M2 10h20"></path><path d="M16 15h2"></path></svg>
+      <span>Баланс лицевого счёта</span>
+    </a>
+    <a href="Docs.dc.html" style="height: 104px; padding: 0 22px; border-radius: 26px; background: #0C1220; border: 1px solid rgba(255,255,255,0.1); color: #EEF3FF; display: flex; align-items: center; gap: 16px; font-size: 22px; font-weight: 700; line-height: 1.2">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#35E0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v6"></path><path d="M15 2v6"></path><path d="M6 8h12v4a6 6 0 0 1-12 0z"></path><path d="M12 18v4"></path></svg>
+      <span>Подключение к сетям</span>
+    </a>
+    <a href="Docs.dc.html" style="height: 104px; padding: 0 22px; border-radius: 26px; background: #0C1220; border: 1px solid rgba(255,255,255,0.1); color: #EEF3FF; display: flex; align-items: center; gap: 16px; font-size: 22px; font-weight: 700; line-height: 1.2">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#35E0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.3 19a10 10 0 1 1 17.4 0"></path><path d="m12 14 4-4"></path></svg>
+      <span>Замена счётчика</span>
+    </a>
+    <a href="Account.dc.html" style="height: 104px; padding: 0 22px; border-radius: 26px; background: #0C1220; border: 1px solid rgba(255,255,255,0.1); color: #EEF3FF; display: flex; align-items: center; gap: 16px; font-size: 22px; font-weight: 700; line-height: 1.2">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#35E0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"></path><path d="M21 3v5h-5"></path></svg>
+      <span>Перерасчёт начислений</span>
+    </a>
+    <a href="Docs.dc.html" style="height: 104px; padding: 0 22px; border-radius: 26px; background: #0C1220; border: 1px solid rgba(255,255,255,0.1); color: #EEF3FF; display: flex; align-items: center; gap: 16px; font-size: 22px; font-weight: 700; line-height: 1.2">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#35E0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path><path d="M9 15l2 2 4-4"></path></svg>
+      <span>Переоформление договора</span>
+    </a>
+    <button onClick="{{askOutage}}" style="height: 104px; padding: 0 22px; border-radius: 26px; background: #0C1220; border: 1px solid rgba(255,255,255,0.1); color: #EEF3FF; display: flex; align-items: center; gap: 16px; font-family: inherit; font-size: 22px; font-weight: 700; line-height: 1.2; text-align: left; cursor: pointer">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#35E0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 21h20z"></path><path d="M12 10v5"></path><path d="M12 18h.01"></path></svg>
+      <span>Отключения и аварии</span>
+    </button>
+  </section>
+
+  <section style="position: relative; height: 270px; display: flex; align-items: center; justify-content: center; gap: 72px">
+    <button aria-label="Ввести вопрос с клавиатуры" style="width: 112px; height: 112px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.16); background: #0C1220; display: flex; align-items: center; justify-content: center; cursor: pointer">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#EEF3FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"></rect><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"></path></svg>
+    </button>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 16px">
+      <sc-if value="{{idle}}" hint-placeholder-val="{{true}}">
+        <button onClick="{{toggleMic}}" aria-label="Включить микрофон" style="width: 176px; height: 176px; border-radius: 50%; border: none; background: #FFB020; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 20px 60px rgba(255,176,32,0.35)">
+          <svg width="68" height="68" viewBox="0 0 24 24" fill="none" stroke="#05080F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"></rect><path d="M5 11a7 7 0 0 0 14 0"></path><path d="M12 18v4"></path></svg>
+        </button>
+        <span style="font-size: 22px; font-weight: 700; color: #EEF3FF">Нажмите и говорите</span>
+      </sc-if>
+      <sc-if value="{{listening}}" hint-placeholder-val="{{false}}">
+        <button onClick="{{toggleMic}}" aria-label="Выключить микрофон" class="pulse-c" style="width: 176px; height: 176px; border-radius: 50%; border: none; background: #35E0FF; display: flex; align-items: center; justify-content: center; cursor: pointer">
+          <svg width="60" height="60" viewBox="0 0 24 24" fill="#05080F" stroke="none"><rect x="6" y="6" width="12" height="12" rx="3"></rect></svg>
+        </button>
+        <span style="font-size: 22px; font-weight: 700; color: #35E0FF">Нажмите, чтобы закончить</span>
+      </sc-if>
+    </div>
+    <a href="Main.dc.html" aria-label="Завершить консультацию" style="width: 112px; height: 112px; border-radius: 50%; border: 1px solid rgba(255,107,90,0.4); background: rgba(255,107,90,0.1); display: flex; align-items: center; justify-content: center">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FF8A7A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+    </a>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1080,"height":1920}}'>
+class Component extends DCLogic {
+  state = { listening: false, outage: false };
+  renderVals() {
+    const listening = this.state.listening;
+    return {
+      listening: listening,
+      idle: !listening,
+      outage: this.state.outage,
+      toggleMic: () => this.setState({ listening: !this.state.listening }),
+      askOutage: () => this.setState({ outage: true, listening: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

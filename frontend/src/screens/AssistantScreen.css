@@ -1,0 +1,247 @@
+.assistant__glow {
+  left: 140px;
+  top: 120px;
+  width: 800px;
+  height: 640px;
+}
+
+.assistant__nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px var(--gutter) 0;
+}
+
+.assistant__hero {
+  position: relative;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.assistant__status {
+  font-size: 30px;
+  font-weight: 500;
+}
+.assistant__status--listening {
+  color: var(--cyan);
+}
+.assistant__status--speaking {
+  color: var(--amber);
+}
+
+/* ── диалог ── */
+
+.chat {
+  position: relative;
+  margin: 24px var(--gutter) 0;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: none;
+  overscroll-behavior: contain;
+}
+.chat::-webkit-scrollbar {
+  display: none;
+}
+
+.chat__inner {
+  min-height: 100%;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 22px;
+}
+
+.bubble {
+  max-width: 800px;
+  padding: 22px 28px;
+  font-size: 25px;
+  line-height: 1.45;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.bubble--bot {
+  align-self: flex-start;
+  border-radius: 28px 28px 28px 8px;
+  background: var(--surface-3);
+}
+
+.bubble--user {
+  align-self: flex-end;
+  max-width: 720px;
+  border-radius: 28px 28px 8px 28px;
+  background: var(--text);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.bubble--error {
+  background: var(--red-soft);
+  border: 1px solid rgba(255, 138, 122, 0.4);
+}
+
+.bubble--live {
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  background: transparent;
+  border: 2px dashed rgba(53, 224, 255, 0.5);
+  color: #a9dfff;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.bubble__timer {
+  font-style: normal;
+  font-size: 22px;
+  color: var(--cyan);
+}
+
+.bubble--typing {
+  flex-direction: row;
+  gap: 10px;
+  padding: 28px 32px;
+}
+.bubble--typing span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  animation: dots 1.1s ease-in-out infinite;
+}
+.bubble--typing span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.bubble--typing span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.action-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 24px;
+  border-radius: 22px;
+  background: var(--ink);
+  border: 1px solid rgba(255, 176, 32, 0.4);
+  color: var(--text);
+  text-align: left;
+}
+
+.action-card__icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  background: var(--amber-soft);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.action-card__text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.action-card__title {
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.action-card__sub {
+  font-size: 20px;
+  color: var(--text-muted);
+}
+
+/* ── быстрые темы ── */
+
+.topics {
+  position: relative;
+  margin: 24px var(--gutter) 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.topic {
+  height: 104px;
+  padding: 0 22px;
+  border-radius: var(--radius-m);
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* ── нижняя панель ── */
+
+.dock {
+  position: relative;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 72px;
+}
+
+.dock__side {
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  display: grid;
+  place-items: center;
+}
+
+.dock__side--end {
+  border-color: rgba(255, 138, 122, 0.4);
+  background: var(--red-soft);
+}
+
+.dock__mic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.mic {
+  width: 176px;
+  height: 176px;
+  border-radius: 50%;
+  background: var(--amber);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 20px 60px rgba(255, 176, 32, 0.35);
+}
+
+.mic--live {
+  background: var(--cyan);
+  box-shadow: none;
+  /* кнопка слегка «дышит» вместе с голосом */
+  scale: calc(1 + var(--mic, 0) * 0.08);
+}
+
+.dock__label {
+  font-size: 22px;
+  font-weight: 700;
+}
+.dock__label--live {
+  color: var(--cyan);
+}

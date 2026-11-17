@@ -1,0 +1,217 @@
+.bot-slot {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.bot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 360px;
+  height: 440px;
+  transform-origin: 0 0;
+}
+
+.bot__body {
+  position: absolute;
+  inset: 0 0 20px 0;
+}
+
+/* кольца-волны */
+.bot__ring {
+  position: absolute;
+  left: 30px;
+  top: 30px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 2px solid rgba(53, 224, 255, 0.3);
+}
+.bot--listening .bot__ring {
+  border: 3px solid rgba(53, 224, 255, 0.55);
+}
+.bot--speaking .bot__ring {
+  border-color: rgba(255, 176, 32, 0.35);
+}
+.bot__ring--dashed {
+  border: 3px dashed rgba(53, 224, 255, 0.45);
+}
+
+.bot__antenna {
+  position: absolute;
+  left: 177px;
+  top: 24px;
+  width: 6px;
+  height: 44px;
+  border-radius: 3px;
+  background: #2a3a5c;
+}
+
+.bot__tip {
+  position: absolute;
+  left: 168px;
+  top: 6px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--amber);
+  box-shadow: 0 0 24px 6px var(--amber-glow);
+}
+
+.bot__ear {
+  position: absolute;
+  top: 140px;
+  width: 30px;
+  height: 86px;
+  border-radius: 15px;
+  background: var(--surface-3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.bot__ear--left {
+  left: 14px;
+}
+.bot__ear--right {
+  left: 316px;
+}
+
+.bot__head {
+  position: absolute;
+  left: 36px;
+  top: 62px;
+  width: 288px;
+  height: 236px;
+  border-radius: 88px;
+  background: linear-gradient(165deg, #22314f 0%, #0e1628 70%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.12),
+    0 30px 60px rgba(0, 0, 0, 0.5);
+  display: grid;
+  place-items: center;
+}
+
+.bot__face {
+  width: 224px;
+  height: 150px;
+  border-radius: 64px;
+  background: #050912;
+  border: 1px solid rgba(53, 224, 255, 0.25);
+  box-shadow: inset 0 0 30px rgba(53, 224, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.bot__eyes {
+  display: flex;
+  gap: 44px;
+  transition: transform 300ms var(--ease-out);
+}
+.bot--thinking .bot__eyes {
+  animation: none;
+  transform: translate(8px, -8px);
+}
+
+.bot__eye {
+  width: 34px;
+  height: 52px;
+  border-radius: 17px;
+  background: var(--cyan);
+  box-shadow: 0 0 18px var(--cyan-glow);
+  transition: height 300ms var(--ease-out);
+}
+.bot--thinking .bot__eye {
+  height: 34px;
+}
+.bot--listening .bot__eye {
+  box-shadow: 0 0 28px var(--cyan-glow);
+}
+
+.bot__mouth {
+  height: 30px;
+  display: grid;
+  place-items: center;
+}
+
+.bot__smile {
+  width: 46px;
+  height: 14px;
+  border-bottom: 4px solid var(--cyan);
+  border-radius: 0 0 24px 24px;
+}
+
+.bot__bars {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+}
+.bot--listening .bot__bars {
+  /* громкость микрофона 0…1 приходит из родителя через --mic */
+  transform: scaleY(calc(0.35 + var(--mic, 0.5) * 1.1));
+  transition: transform 80ms linear;
+}
+.bot__bars span {
+  width: 6px;
+  height: 30px;
+  border-radius: 3px;
+  background: var(--cyan);
+  animation: eq 0.8s ease-in-out infinite;
+}
+.bot__bars span:nth-child(3) {
+  background: var(--amber);
+}
+
+.bot__dots {
+  display: flex;
+  gap: 10px;
+}
+.bot__dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--cyan);
+  animation: dots 1.1s ease-in-out infinite;
+}
+.bot__dots span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.bot__dots span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.bot__torso {
+  position: absolute;
+  left: 110px;
+  top: 306px;
+  width: 140px;
+  height: 90px;
+  border-radius: 40px 40px 48px 48px;
+  background: linear-gradient(170deg, #1c2a46, #0c1424);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: grid;
+  place-items: center;
+}
+
+.bot__core {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 3px solid var(--amber);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 0 20px rgba(255, 176, 32, 0.45);
+}
+
+.bot__shadow {
+  position: absolute;
+  left: 115px;
+  top: 418px;
+  width: 130px;
+  height: 14px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.7);
+  filter: blur(6px);
+}

@@ -1,0 +1,89 @@
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 48px var(--gutter) 0;
+}
+
+.header__brand {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header__logo {
+  width: 72px;
+  height: 72px;
+  border-radius: 22px;
+  background: var(--amber);
+  display: grid;
+  place-items: center;
+}
+
+.header__brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.header__name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 30px;
+  letter-spacing: -0.01em;
+}
+
+.header__sub {
+  font-size: 20px;
+  color: var(--text-muted);
+}
+
+.header__right {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.lang {
+  display: flex;
+  gap: 4px;
+  padding: 6px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+.lang__btn {
+  height: 56px;
+  min-width: 80px;
+  padding: 0 20px;
+  border-radius: 999px;
+  color: var(--text-muted);
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.lang__btn--active {
+  background: var(--text);
+  color: var(--ink);
+}
+
+.clock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.clock__time {
+  font-size: 34px;
+  font-weight: 500;
+}
+
+.clock__date {
+  font-size: 18px;
+  color: var(--text-muted);
+}

@@ -1,0 +1,23 @@
+.kiosk-viewport {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #000;
+}
+
+.kiosk-box {
+  position: relative;
+}
+
+.kiosk-stage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--kiosk-w);
+  height: var(--kiosk-h);
+  overflow: hidden;
+  transform-origin: 0 0;
+  background: var(--ink);
+}

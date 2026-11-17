@@ -1,0 +1,59 @@
+.idle {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-idle);
+  background: rgba(5, 8, 15, 0.82);
+  backdrop-filter: blur(10px);
+  display: grid;
+  place-items: center;
+}
+
+.idle__card {
+  width: 860px;
+  padding: 64px 56px 56px;
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  text-align: center;
+}
+
+.idle__ring {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  display: grid;
+  place-items: center;
+}
+.idle__ring svg {
+  position: absolute;
+  inset: 0;
+}
+
+.idle__count {
+  font-size: 72px;
+}
+
+.idle__title {
+  font-size: 52px;
+}
+
+.idle__text {
+  font-size: 26px;
+  line-height: 1.45;
+  color: var(--text-soft);
+}
+
+.idle__actions {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 8px;
+}
+.idle__actions .btn {
+  height: 116px;
+}

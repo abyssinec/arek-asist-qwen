@@ -1,0 +1,14 @@
+import {build} from 'esbuild';
+import {writeFileSync} from 'node:fs';
+import {spawnSync} from 'node:child_process';
+import {fileURLToPath} from 'node:url';
+await import('./build.mjs');
+const frontend=fileURLToPath(new URL('../frontend/',import.meta.url));
+const types=spawnSync(process.execPath,['node_modules/typescript/bin/tsc','-p','tsconfig.json'],{cwd:frontend,stdio:'inherit'});
+if(types.status!==0)throw new Error('Frontend typecheck failed');
+const result=spawnSync(process.execPath,['node_modules/vite/bin/vite.js','build'],{cwd:frontend,stdio:'inherit',env:{...process.env,VITE_QWEN_ENABLED:'true',VITE_QWEN_API_URL:'/qwen-api',VITE_TTS_ENABLED:'true',VITE_USE_MOCKS:'true',VITE_PRINT_MODE:'mock'}});
+if(result.status!==0)throw new Error('Frontend build failed');
+await build({entryPoints:[fileURLToPath(new URL('./cloudflare/worker.mjs',import.meta.url))],bundle:true,format:'esm',platform:'browser',external:['node:buffer'],outfile:frontend+'dist/_worker.js'});
+writeFileSync(frontend+'dist/_routes.json',JSON.stringify({version:1,include:['/qwen-api/*','/api/*'],exclude:[]}));
+writeFileSync(frontend+'dist/_headers','/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: microphone=(self), camera=()\n/\n  Cache-Control: no-cache\n');
+console.log('Cloudflare Pages: frontend/dist, server-only Qwen Worker.');

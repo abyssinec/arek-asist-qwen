@@ -1,0 +1,227 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background: #000;
+  color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Киоск: без выделения текста, без «резинового» скролла и долгих тапов. */
+body {
+  overflow: hidden;
+  overscroll-behavior: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+#root {
+  height: 100%;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  text-align: inherit;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+button:disabled {
+  cursor: default;
+  opacity: 0.42;
+}
+
+:focus-visible {
+  outline: 3px solid var(--cyan);
+  outline-offset: 4px;
+}
+
+svg,
+video {
+  display: block;
+}
+
+/* ── утилиты ── */
+
+.press {
+  transition:
+    transform 140ms var(--ease-out),
+    filter 140ms var(--ease-out),
+    background-color 180ms var(--ease-out),
+    border-color 180ms var(--ease-out);
+}
+.press:not(:disabled):active {
+  transform: scale(0.97);
+  filter: brightness(1.12);
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ── каркас экрана ── */
+
+.screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--ink);
+  color: var(--text);
+}
+
+/* Декор под контентом: z-index -1 внутри изолированного экрана. */
+.screen__grid {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.screen__glow {
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(53, 224, 255, 0.16), rgba(53, 224, 255, 0) 65%);
+}
+
+.eyebrow {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  font-size: 20px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.chip--demo {
+  background: var(--amber-soft);
+  border-color: transparent;
+  color: var(--amber);
+  font-weight: 700;
+}
+.chip--online {
+  background: var(--green-soft);
+  border-color: transparent;
+  color: var(--green);
+  font-weight: 700;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+/* ── кнопки ── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  height: 128px;
+  padding: 0 32px;
+  border-radius: var(--radius-l);
+  font-size: 28px;
+  font-weight: 800;
+  text-align: center;
+}
+.btn--primary {
+  background: var(--amber);
+  color: var(--ink);
+  box-shadow: 0 20px 60px rgba(255, 176, 32, 0.28);
+}
+.btn--light {
+  background: var(--text);
+  color: var(--ink);
+}
+.btn--ghost {
+  border: 1px solid var(--line-strong);
+  color: var(--text);
+  font-weight: 700;
+}
+.btn--cyan {
+  border: 1px solid rgba(53, 224, 255, 0.4);
+  background: var(--cyan-soft);
+  color: var(--cyan);
+  font-weight: 700;
+}
+
+.pill {
+  height: 64px;
+  padding: 0 28px 0 20px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.card {
+  border-radius: var(--radius-l);
+  background: var(--surface);
+  border: 1px solid var(--line);
+}

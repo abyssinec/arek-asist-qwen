@@ -1,0 +1,232 @@
+.attract {
+  cursor: pointer;
+}
+
+.attract__glow {
+  left: -200px;
+  top: 1200px;
+  width: 900px;
+  height: 900px;
+}
+
+.attract__stage {
+  position: relative;
+  margin: 40px var(--gutter) 0;
+  height: 1060px;
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.attract__bars {
+  position: absolute;
+  left: 40px;
+  right: 40px;
+  top: 36px;
+  z-index: 2;
+  display: flex;
+  gap: 12px;
+}
+
+.attract__track {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.14);
+  overflow: hidden;
+}
+
+.attract__fill {
+  height: 100%;
+  background: var(--text);
+  transform-origin: left;
+}
+.attract__fill--run {
+  animation: fill linear both;
+}
+
+.attract__badge {
+  position: absolute;
+  right: 40px;
+  top: 64px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(5, 8, 15, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 18px;
+  color: var(--text-muted);
+}
+
+.attract__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  padding: 150px 72px 72px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.slide__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.slide__title {
+  font-size: 80px;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+}
+
+.slide__text {
+  max-width: 760px;
+  font-size: 30px;
+  line-height: 1.4;
+  color: var(--text-soft);
+}
+
+/* визуал «лицевой счёт» */
+.visual-card {
+  align-self: flex-end;
+  width: 560px;
+  padding: 40px;
+  border-radius: var(--radius-l);
+  background: var(--text);
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  transform: rotate(-3deg);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+}
+.visual-card__top {
+  font-size: 20px;
+  font-weight: 700;
+  color: #4a5875;
+}
+.visual-card__amount {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 20px;
+  color: #4a5875;
+}
+.visual-card__amount strong {
+  font-size: 56px;
+  color: var(--ink);
+}
+.visual-card__bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  height: 90px;
+}
+.visual-card__bars div {
+  flex: 1;
+  border-radius: 8px;
+  background: #c9d2e3;
+}
+.visual-card__bars .is-current {
+  background: var(--amber);
+}
+
+/* визуал «чек» */
+.visual-receipt {
+  align-self: flex-end;
+  width: 480px;
+  padding: 36px 36px 44px;
+  border-radius: 6px;
+  background: var(--paper);
+  color: var(--paper-ink);
+  font-family: var(--font-mono);
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transform: rotate(3deg);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+}
+.visual-receipt strong:first-child {
+  text-align: center;
+  letter-spacing: 0.08em;
+}
+.visual-receipt hr {
+  width: 100%;
+  margin: 0;
+  border: 0;
+  border-top: 2px dashed var(--paper-rule);
+}
+
+/* визуал «голос» */
+.visual-voice {
+  height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+.visual-voice span {
+  width: 18px;
+  height: 140px;
+  border-radius: 9px;
+  background: var(--cyan);
+  animation: eq 0.9s ease-in-out infinite;
+}
+.visual-voice .is-accent {
+  background: var(--amber);
+}
+
+/* нижняя часть */
+.attract__bottom {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 0 var(--gutter) 0 40px;
+}
+
+.attract__cta {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.attract__hello {
+  font-size: 26px;
+  color: var(--text-muted);
+}
+
+.attract__title {
+  font-size: 50px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.attract__start {
+  height: 132px;
+  border-radius: 999px;
+  font-size: 34px;
+}
+
+.attract__sensor {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 20px;
+  color: var(--text-muted);
+}

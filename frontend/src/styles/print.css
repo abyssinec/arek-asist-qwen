@@ -1,0 +1,130 @@
+/*
+ * Печать браузером (VITE_PRINT_MODE=browser).
+ * Шаблоны рендерятся в #print-root и видны только при печати.
+ * Именованные страницы: термочек 80 мм и лист A4.
+ */
+
+#print-root {
+  display: none;
+}
+
+@page receipt {
+  size: 80mm 230mm;
+  margin: 3mm 4mm;
+}
+
+@page a4 {
+  size: A4;
+  margin: 16mm 14mm;
+}
+
+@media print {
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    overflow: visible !important;
+    height: auto !important;
+  }
+  #root {
+    display: none !important;
+  }
+  #print-root {
+    display: block;
+  }
+}
+
+/* ── термочек ── */
+
+.print-receipt {
+  page: receipt;
+  width: 72mm;
+  font-family: var(--font-mono);
+  font-size: 9.5pt;
+  line-height: 1.35;
+  color: #000;
+}
+.print-receipt h1 {
+  font-size: 12pt;
+  text-align: center;
+  letter-spacing: 0.08em;
+}
+.print-receipt .rule {
+  border-top: 1px dashed #000;
+  margin: 2.5mm 0;
+}
+.print-receipt .row {
+  display: flex;
+  justify-content: space-between;
+}
+.print-receipt .center {
+  text-align: center;
+}
+.print-receipt ol {
+  margin: 0;
+  padding-left: 5mm;
+}
+
+/* ── выписка A4 ── */
+
+.print-a4 {
+  page: a4;
+  font-family: var(--font-body);
+  font-size: 10.5pt;
+  color: #000;
+}
+.print-a4 header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 2px solid #000;
+  padding-bottom: 4mm;
+  margin-bottom: 6mm;
+}
+.print-a4 h1 {
+  font-family: var(--font-display);
+  font-size: 16pt;
+  font-weight: 600;
+}
+.print-a4 dl {
+  display: grid;
+  grid-template-columns: 40mm 1fr;
+  gap: 2mm 6mm;
+  margin: 0 0 8mm;
+}
+.print-a4 dt {
+  color: #444;
+}
+.print-a4 dd {
+  margin: 0;
+  font-weight: 600;
+}
+.print-a4 table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+.print-a4 th,
+.print-a4 td {
+  border-bottom: 1px solid #bbb;
+  padding: 2.5mm 2mm;
+  text-align: right;
+}
+.print-a4 th:first-child,
+.print-a4 td:first-child {
+  text-align: left;
+}
+.print-a4 .total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6mm;
+  padding: 4mm;
+  border: 2px solid #000;
+  font-size: 13pt;
+  font-weight: 800;
+}
+.print-a4 footer {
+  margin-top: 10mm;
+  font-size: 8.5pt;
+  color: #555;
+}

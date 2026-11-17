@@ -1,0 +1,18 @@
+{
+  "v": 3,
+  "createdOnFiles": {"v": 1, "at": "2026-10-09T10:00:00Z"},
+  "title": "AI-консультант Астана РЕК",
+  "launch": {"view": "canvas"},
+  "pages": [],
+  "boards": {
+    "Main.dc.html": {"x": 0, "y": 0, "w": 1080, "h": 1920, "title": "1 · Заставка (режим ожидания)", "is_interactive": true},
+    "Assistant.dc.html": {"x": 1160, "y": 0, "w": 1080, "h": 1920, "title": "2 · AI-консультант", "is_interactive": true},
+    "Docs.dc.html": {"x": 2320, "y": 0, "w": 1080, "h": 1920, "title": "3 · Список документов и печать чека", "is_interactive": true},
+    "Account.dc.html": {"x": 3480, "y": 0, "w": 1080, "h": 1920, "title": "4 · Лицевой счёт (биллинг)", "is_interactive": true}
+  },
+  "order": ["Main.dc.html", "Assistant.dc.html", "Docs.dc.html", "Account.dc.html"],
+  "notes": {
+    "flowTitle": {"x": 0, "y": -320, "text": "Тач-киоск · AI-консультант Астана РЕК · 1080×1920", "kind": "title1", "maxW": 4560}
+  },
+  "designSystems": []
+}

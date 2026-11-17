@@ -1,0 +1,132 @@
+.osk {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-sheet);
+}
+
+.osk__scrim {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  cursor: default;
+}
+
+.osk__sheet {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 36px 40px 56px;
+  border-radius: 48px 48px 0 0;
+  background: var(--surface);
+  border-top: 1px solid var(--line-strong);
+  box-shadow: 0 -30px 80px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.osk__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.osk__title {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.osk__close {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  display: grid;
+  place-items: center;
+}
+
+.osk__field-row {
+  display: flex;
+  gap: 16px;
+}
+
+.osk__field {
+  flex: 1;
+  min-height: 112px;
+  padding: 24px 28px;
+  border-radius: 28px;
+  background: var(--ink);
+  border: 2px solid var(--cyan);
+  font-size: 30px;
+  line-height: 1.35;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  word-break: break-word;
+}
+
+.osk__placeholder {
+  color: var(--text-muted);
+}
+
+.osk__caret {
+  width: 3px;
+  height: 36px;
+  margin-left: 4px;
+  background: var(--cyan);
+}
+
+.osk__send {
+  width: 200px;
+  border-radius: 28px;
+  background: var(--amber);
+  color: var(--ink);
+  font-size: 24px;
+  font-weight: 800;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.osk__rows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.osk__row {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.osk__key {
+  flex: 1 1 0;
+  max-width: 84px;
+  height: 84px;
+  border-radius: 18px;
+  background: var(--surface-3);
+  border: 1px solid var(--line);
+  font-size: 32px;
+  font-weight: 600;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.osk__key--space {
+  flex: 5 1 0;
+  max-width: none;
+  font-size: 22px;
+  color: var(--text-soft);
+}
+
+.osk__key--wide {
+  flex: 2 1 0;
+  max-width: 170px;
+}

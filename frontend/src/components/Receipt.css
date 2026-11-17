@@ -1,0 +1,87 @@
+.receipt {
+  width: 660px;
+  padding: 40px 44px 36px;
+  border-radius: 6px;
+  background: var(--paper);
+  color: var(--paper-ink);
+  font-family: var(--font-mono);
+  font-size: 21px;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55);
+}
+
+.receipt__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.receipt__brand {
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: 0.1em;
+}
+
+.receipt__muted {
+  font-size: 18px;
+  color: var(--paper-muted);
+}
+
+.receipt__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.receipt__rule {
+  width: 100%;
+  margin: 0;
+  border: 0;
+  border-top: 2px dashed var(--paper-rule);
+}
+
+.receipt__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.receipt__list li {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.receipt__box {
+  width: 22px;
+  height: 22px;
+  margin-top: 5px;
+  border: 2px solid var(--paper-ink);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.receipt__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.receipt__note {
+  font-size: 19px;
+  line-height: 1.45;
+}
+
+.receipt__qr {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  line-height: 1.45;
+}

@@ -1,0 +1,58 @@
+/* Дизайн-токены утверждённого прототипа (design/kiosk-prototype). */
+:root {
+  /* поверхности */
+  --ink: #05080f;
+  --surface: #0c1220;
+  --surface-2: #111a2c;
+  --surface-3: #16223a;
+  --well: #0a0f1b;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.16);
+
+  /* текст */
+  --text: #eef3ff;
+  --text-soft: #a9b6cf;
+  --text-muted: #8c9bb8;
+
+  /* акценты */
+  --amber: #ffb020;
+  --amber-soft: rgba(255, 176, 32, 0.12);
+  --amber-glow: rgba(255, 176, 32, 0.55);
+  --cyan: #35e0ff;
+  --cyan-soft: rgba(53, 224, 255, 0.1);
+  --cyan-glow: rgba(53, 224, 255, 0.9);
+  --green: #3ddc97;
+  --green-soft: rgba(61, 220, 151, 0.12);
+  --red: #ff8a7a;
+  --red-soft: rgba(255, 107, 90, 0.1);
+
+  /* бумага (чек, выписка) */
+  --paper: #f6f4ee;
+  --paper-ink: #12151c;
+  --paper-muted: #4b5160;
+  --paper-rule: #a3a8b2;
+
+  /* типографика */
+  --font-display: 'Unbounded Variable', 'Unbounded', sans-serif;
+  --font-body: 'Manrope Variable', 'Manrope', sans-serif;
+  --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
+
+  /* сетка и формы */
+  --kiosk-w: 1080px;
+  --kiosk-h: 1920px;
+  --gutter: 64px;
+  --radius-xl: 48px;
+  --radius-l: 36px;
+  --radius-m: 26px;
+  --radius-s: 18px;
+
+  /* движение */
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+
+  /* слои */
+  --z-content: 1;
+  --z-overlay: 50;
+  --z-sheet: 60;
+  --z-idle: 90;
+}

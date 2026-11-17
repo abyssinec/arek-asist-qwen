@@ -1,0 +1,113 @@
+.docs__intro {
+  position: relative;
+  padding: 44px var(--gutter) 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.docs__title {
+  font-size: 54px;
+  line-height: 1.1;
+}
+
+.docs__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  min-height: 48px;
+}
+
+/* «окно банкомата» — утопленный экран с чеком */
+.docs__well {
+  position: relative;
+  margin: 36px var(--gutter) 0;
+  flex: 1;
+  min-height: 0;
+  padding: 48px;
+  border-radius: var(--radius-xl);
+  background: var(--well);
+  border: 1px solid var(--line);
+  box-shadow:
+    inset 0 0 0 10px #070b14,
+    inset 0 20px 60px rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  /* длинный чек (казахский текст, много документов) прокручивается пальцем внутри окна */
+  overflow-y: auto;
+  scrollbar-width: none;
+  overscroll-behavior: contain;
+}
+.docs__well::-webkit-scrollbar {
+  display: none;
+}
+.docs__well > * {
+  flex-shrink: 0;
+}
+
+.docs__skeleton {
+  width: 660px;
+  height: 100%;
+  border-radius: 6px;
+  background: var(--surface-2);
+}
+
+.docs__error {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  font-size: 26px;
+  color: var(--text-soft);
+  text-align: center;
+}
+
+.docs__actions {
+  position: relative;
+  padding: 32px var(--gutter) 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.docs__tray {
+  height: 56px;
+  padding: 0 24px;
+  border-radius: 16px;
+  background: var(--well);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 18px;
+  color: var(--text-muted);
+}
+
+.docs__slot {
+  flex: 1;
+  height: 8px;
+  border-radius: 4px;
+  background: #000;
+}
+
+.docs__buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.docs__back {
+  width: 260px;
+  height: 136px;
+}
+
+.docs__print {
+  flex: 1;
+  height: 136px;
+  gap: 22px;
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}

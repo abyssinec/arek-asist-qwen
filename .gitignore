@@ -1,0 +1,32 @@
+# зависимости и сборка
+node_modules/
+dist/
+
+# локальные настройки и секреты
+.env.local
+.env.*.local
+
+# системное
+.DS_Store
+*.log
+
+backend/.generated/
+
+.dev.vars
+.wrangler/
+
+# Серверные настройки и ключевые материалы: только пустые примеры в Git
+.env
+.env.*
+!.env.example
+.dev.vars*
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+
+# Документация поставки
+*.md
+!README.md
+!docs/HANDOVER.md
